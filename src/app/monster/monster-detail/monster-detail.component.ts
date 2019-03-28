@@ -32,12 +32,12 @@ export class MonsterDetailComponent implements OnInit {
   //   this.monsterService.favoriteMonster(this.id, !this.monster.favorite)
   // }
 
-  onEditRecipe() {
+  onEditMonster() {
     this.router.navigate(['edit'], {relativeTo: this.route})
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route})
   }
 
-  onDeleteRecipe() {
+  onDeleteMonster() {
     this.monsterService.deleteRecipe(this.id)
     this.router.navigate(['/mine'])
   }

@@ -29,6 +29,22 @@ export class MonsterListComponent implements OnInit, OnDestroy {
     this.router.navigate(['new'], {relativeTo: this.route})
   }
 
+  onRandomMonster() {
+    this.monsterService.addRandomMonster()
+  }
+
+  onRemoveAll() {
+    this.monsterService.removeAll()
+  }
+
+  onUnfavoriteAll() {
+    this.monsterService.unfavoriteAll()
+  }
+
+  onCreateTeam() {
+    this.monsterService.createRandomTeam()
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }

@@ -30,7 +30,7 @@ export class MonsterEditComponent implements OnInit {
     // let monsterImagePath = ''
     let monsterDescription = ''
     // let monsterIngredients = new FormArray([])
-    let monsterFavorite: boolean
+    let monsterFavorite = false
 
     if (this.editMode) {
       const monster = this.monsterService.getRecipe(this.id)
