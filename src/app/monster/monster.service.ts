@@ -3,31 +3,34 @@ import { Injectable } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../quiz/shopping-list.service';
 import { Subject } from 'rxjs';
-import monsterData from '../../assets/monsters.json' ;
-import { MonstersComponent } from './monster.component';
+import monstersData from '../../assets/monsters.json' ;
 
 @Injectable()
 export class MonsterService {
     monstersChanged = new Subject<Monster[]>()
-    json:any = monsterData
+    // json:any = monsterData
+    private monsterData = monstersData
+    
 
     private monsters: Monster[] = [
-        new Monster('Dracula', 
-        'This is simply a test', 
-        true),
+        new Monster('Vampire', 
+        'He just wants your blood.', 
+        true,
+        'soldier'),
 
-        new Monster('Swamp Thing', 
-        'This is simply a test', 
-        false)
+        new Monster('Swamp Creature', 
+        'He awaits you in the swamp.', 
+        false,
+        'medic')
       ];
 
     constructor(private slService: ShoppingListService) {}
 
-    getRecipes() {
+    getMonsters() {
         return this.monsters.slice()
     }
 
-    getRecipe(index: number) {
+    getMonster(index: number) {
         return this.monsters[index]
     }
 
@@ -35,17 +38,17 @@ export class MonsterService {
     //     this.slService.addIngredients(ingredients)
     // }
 
-    addRecipe(monster: Monster) {
+    addMonster(monster: Monster) {
         this.monsters.push(monster)
         this.monstersChanged.next(this.monsters.slice())
     }
 
-    updateRecipe(index: number, newMonster: Monster) {
+    updateMonster(index: number, newMonster: Monster) {
         this.monsters[index] = newMonster
         this.monstersChanged.next(this.monsters.slice())
     }
 
-    deleteRecipe(index: number) {
+    deleteMonster(index: number) {
         this.monsters.splice(index, 1)
         this.monstersChanged.next(this.monsters.slice())
     }
@@ -56,8 +59,24 @@ export class MonsterService {
     }
 
     addRandomMonster() {
-        let r = Math.floor(Math.random() * monsterData.length)
-        let monster = new Monster(monsterData[r].name, monsterData[r].desc, false)
+        let unique = false
+        let r = Math.floor(Math.random() * 4)
+        var monster = new Monster(this.monsterData[r].name, this.monsterData[r].desc, false, this.monsterData[r].role)
+        // Need to figure this one out
+        // while (!unique) {
+        //     var monster = new Monster(monsterData[r].name, monsterData[r].desc, false)
+        //     console.log("This is monster: " + monster.name)
+        //     for (let i = 0; i < this.monsters.length; i++) {
+        //         console.log("This is monsters: " + this.monsters[i].name)
+        //         if (this.monsters[i].name.toUpperCase() === monster.name.toUpperCase()) {
+                    
+        //         } else {
+        //             unique = true
+        //             this.monsters.push(monster)
+        //             break
+        //         }
+        //     }
+        // }
 
         this.monsters.push(monster)
         this.monstersChanged.next(this.monsters.slice())
@@ -75,8 +94,8 @@ export class MonsterService {
 
         // Now create the monsters
         for (let i = 0; i < 5; i++) {
-            let r = Math.floor(Math.random() * monsterData.length)
-            let monster = new Monster(monsterData[r].name, monsterData[r].desc, false)
+            let r = Math.floor(Math.random() * this.monsterData.length)
+            let monster = new Monster(this.monsterData[r].name, this.monsterData[r].desc, false, this.monsterData[r].role)
     
             this.monsters.push(monster)
         }
@@ -89,6 +108,23 @@ export class MonsterService {
             this.monsters[i].favorite = false
         }
 
+        this.monstersChanged.next(this.monsters.slice())
+    }
+    
+    sortMonsters() {
+        function dynamicSort(property) {
+            var sortOrder = 1;
+            if(property[0] === "-") {
+                sortOrder = -1;
+                property = property.substr(1);
+            }
+            return function (a,b) {
+                var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+                return result * sortOrder;
+            }
+        }
+          
+        this.monsters.sort(dynamicSort("name"))
         this.monstersChanged.next(this.monsters.slice())
     }
 }

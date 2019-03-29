@@ -1,10 +1,10 @@
-.glyphicon {
-    font-size: 2em;
-    margin-top: 10px;
-}
-
 .hearted {
     font-size: 2em;
     margin-top: 10px;
     color: red;
+}
+
+.role {
+    font-size: 2em;
+    margin-top: 10px;
 }

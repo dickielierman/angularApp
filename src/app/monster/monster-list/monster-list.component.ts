@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Monster } from '../monster.model';
 import { MonsterService } from '../monster.service';
@@ -22,27 +22,39 @@ export class MonsterListComponent implements OnInit, OnDestroy {
         this.monsters = monsters
       }
     )
-    this.monsters = this.monsterService.getRecipes()
+    this.monsters = this.monsterService.getMonsters()
   }
 
-  onNewRecipe() {
-    this.router.navigate(['new'], {relativeTo: this.route})
+  onNewMonster() {
+    this.router.navigate(['new'], { relativeTo: this.route })
   }
 
   onRandomMonster() {
     this.monsterService.addRandomMonster()
+    this.onClickedButton()
   }
 
   onRemoveAll() {
     this.monsterService.removeAll()
+    this.onClickedButton()
   }
 
   onUnfavoriteAll() {
     this.monsterService.unfavoriteAll()
+    this.onClickedButton()
   }
 
   onCreateTeam() {
     this.monsterService.createRandomTeam()
+    this.onClickedButton()
+  }
+
+  onSort() {
+    this.monsterService.sortMonsters()
+  }
+
+  onClickedButton() {
+    this.router.navigate(['../'], { relativeTo: this.route })
   }
 
   ngOnDestroy() {

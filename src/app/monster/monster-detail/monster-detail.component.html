@@ -9,8 +9,16 @@
 </div> -->
 <div class="monsterDetail">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-8">
       <h1>{{ monster.name }}</h1>
+    </div>
+    <div class="col-xs-4">
+        <span class="glyphicon glyphicon-heart pull-right hearted" aria-hidden="true" *ngIf="monster.favorite"></span>
+        <span class="glyphicon ra ra-sword pull-right role" aria-hidden="true" *ngIf="monster.role === 'soldier'"></span>
+        <span class="glyphicon ra ra-health pull-right role" aria-hidden="true" *ngIf="monster.role === 'medic'"></span>
+        <span class="glyphicon ra ra-cracked-shield pull-right role" aria-hidden="true" *ngIf="monster.role === 'shield'"></span>
+        <span class="glyphicon ra ra-kunai pull-right role" aria-hidden="true" *ngIf="monster.role === 'thief'"></span>
+        <span class="glyphicon ra ra-laser-blast pull-right role" aria-hidden="true" *ngIf="monster.role === 'mage'"></span>
     </div>
   </div>
   <div class="row">

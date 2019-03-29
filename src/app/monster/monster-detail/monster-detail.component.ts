@@ -19,7 +19,7 @@ export class MonsterDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id']
-        this.monster = this.monsterService.getRecipe(this.id)
+        this.monster = this.monsterService.getMonster(this.id)
       }
     )
   }
@@ -38,7 +38,7 @@ export class MonsterDetailComponent implements OnInit {
   }
 
   onDeleteMonster() {
-    this.monsterService.deleteRecipe(this.id)
+    this.monsterService.deleteMonster(this.id)
     this.router.navigate(['/mine'])
   }
 }
