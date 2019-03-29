@@ -8,15 +8,15 @@ import { MonstersComponent } from './monster/monster.component';
 import { MonsterListComponent } from './monster/monster-list/monster-list.component';
 import { MonsterDetailComponent } from './monster/monster-detail/monster-detail.component';
 import { MonsterItemComponent } from './monster/monster-list/monster-item/monster-item.component';
-import { ShoppingListComponent } from './quiz/shopping-list.component';
-import { ShoppingEditComponent } from './quiz/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService } from './quiz/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { MonsterStartComponent } from './monster/monster-start/monster-start.component';
 import { MonsterEditComponent } from './monster/monster-edit/monster-edit.component';
 import { MonsterService } from './monster/monster.service';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -26,12 +26,11 @@ import { FooterComponent } from './footer/footer.component';
     MonsterListComponent,
     MonsterDetailComponent,
     MonsterItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropdownDirective,
     MonsterStartComponent,
     MonsterEditComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService, MonsterService],
+  providers: [MonsterService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,5 @@
 import { Monster  } from './monster.model';
 import { Injectable } from '@angular/core';
-import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../quiz/shopping-list.service';
 import { Subject } from 'rxjs';
 import monstersData from '../../assets/monsters.json' ;
 
@@ -24,7 +22,7 @@ export class MonsterService {
         'medic')
       ];
 
-    constructor(private slService: ShoppingListService) {}
+    constructor() {}
 
     getMonsters() {
         return this.monsters.slice()
