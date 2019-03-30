@@ -24,17 +24,8 @@ export class MonsterDetailComponent implements OnInit {
     )
   }
 
-  // onAddToShoppingList() {
-  //   this.monsterService.addIngredientsToShoppingList(this.monster.ingredients)
-  // }
-
-  // onFavorite() {
-  //   this.monsterService.favoriteMonster(this.id, !this.monster.favorite)
-  // }
-
   onEditMonster() {
     this.router.navigate(['edit'], {relativeTo: this.route})
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route})
   }
 
   onDeleteMonster() {

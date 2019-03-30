@@ -26,5 +26,6 @@ export class AuthService {
     logout() {
         this.loggedIn = false
         this.router.navigate(['../'], { relativeTo: this.route })
+        return this.loggedIn
     }
 }

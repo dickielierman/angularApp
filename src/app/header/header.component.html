@@ -9,7 +9,7 @@
         <li routerLinkActive="active"><a routerLink="/mine">My Monster Team</a></li>
         <!-- <li routerLinkActive="active"><a routerLink="/quiz">Monster Quiz</a></li> -->
       </ul>
-      <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
+      <ul class="nav navbar-nav navbar-right" *ngIf="authService.loggedIn">
         <li class="dropdown" appDropdown>
           <a style="cursor: pointer" class="dropdown-toggle" role="button"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
           <ul class="dropdown-menu">

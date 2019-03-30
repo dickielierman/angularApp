@@ -54,7 +54,7 @@ export class MonsterListComponent implements OnInit, OnDestroy {
   }
 
   onClickedButton() {
-    this.router.navigate(['../'], { relativeTo: this.route })
+    this.router.navigate(['../mine'], { relativeTo: this.route })
   }
 
   ngOnDestroy() {
