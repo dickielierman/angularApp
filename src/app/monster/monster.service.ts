@@ -2,7 +2,7 @@ import { Monster } from './monster.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import monstersData from '../../assets/monsters.json';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogService } from '../shared/dialog.service';
 
 @Injectable()
