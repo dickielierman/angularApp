@@ -35,8 +35,10 @@ export class MonsterListComponent implements OnInit, OnDestroy {
   }
 
   onRemoveAll() {
-    this.monsterService.removeAll()
-    this.onClickedButton()
+    if (confirm("Are you sure you want to remove all monsters?")) {
+      this.monsterService.removeAll()
+      this.onClickedButton()
+    }
   }
 
   onUnfavoriteAll() {
